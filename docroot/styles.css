@@ -1,0 +1,40 @@
+/* styles.css */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, rgb(23, 88, 93), rgb(91, 134, 229));
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button[data-state='0'] {
+    background: linear-gradient(to right, rgb(255, 0, 0), rgb(128, 0, 0));  /* red gradient */
+    color: white;
+}
+
+button[data-state='1'] {
+    background: linear-gradient(to right, rgb(0, 255, 0), rgb(0, 128, 0));  /* green gradient */
+    color: white;
+}
+
+/* Set the background to a grey gradient, cover the whole page */
+html, body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(to bottom right, rgb(18, 18, 18), rgb(43, 43, 43));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
