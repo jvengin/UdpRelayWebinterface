@@ -29,4 +29,7 @@ function refreshStatus() {
     xhr.send();
 }
 
-window.onload = refreshStatus;
+window.onload = function() {
+    refreshStatus();
+    setInterval(refreshStatus, 5000);
+};
