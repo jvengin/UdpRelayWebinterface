@@ -7,6 +7,14 @@
 #include <thread>
 #include <unistd.h>
 
+// Function to create and send response
+void sendResponse(const std::string& status, drogon::HttpStatusCode code, std::function<void (const drogon::HttpResponsePtr &)> &&callback) {
+    auto resp = drogon::HttpResponse::newHttpResponse();
+    resp->setStatusCode(code);
+    resp->setBody(status);
+    callback(resp);
+}
+
 int main() {
     boost::asio::io_context io_context;
     std::string host = "192.168.1.8";  // replace with your host
@@ -34,43 +42,43 @@ int main() {
         std::cout << entry.path() << std::endl;
     }
 
-    // Register a handler for the path /status
-    drogon::app().registerHandler("/status/{1}", // Only works if the path is /status/anything
-    [&relayController](const drogon::HttpRequestPtr &req,
-                std::function<void (const drogon::HttpResponsePtr &)> &&callback, std::string ignored) {
-        std::string status = relayController.get_status();
-        std::cout << "Status: " << status << "\n";  // should print "Status: 00000000"
+    drogon::app().registerHandler("/status/{1}", 
+        [&relayController](const drogon::HttpRequestPtr &req,
+                    std::function<void (const drogon::HttpResponsePtr &)> &&callback, std::string ignored) {
+            std::string status = relayController.get_status();
+            std::cout << "Status: " << status << "\n";
 
-        auto resp = drogon::HttpResponse::newHttpResponse();
-        resp->setStatusCode(drogon::k200OK);
-        resp->setBody(status);
-        callback(resp);
-    });
+            sendResponse(status, drogon::k200OK, std::move(callback));
+        });
 
     drogon::app().registerHandler("/relay/{1}/{2}",
         [&relayController](const drogon::HttpRequestPtr &req,
                     std::function<void (const drogon::HttpResponsePtr &)> &&callback,
                     std::string relay,
                     std::string action) {
-            int relay_num = std::stoi(relay);
-            if (action == "on") {
-                relayController.switch_relay_on(relay_num);
-            } else if (action == "off") {
-                relayController.switch_relay_off(relay_num);
-            }
-            std::cout << "Switching relay " << relay_num << " " << action << "\n";
-            std::string status = relayController.get_status();
-            std::cout << "Status: " << status << "\n";  // should print "Status: 00000000"
+            try {
+                int relay_num = std::stoi(relay);
+                if (action == "on") {
+                    relayController.switch_relay_on(relay_num);
+                } else if (action == "off") {
+                    relayController.switch_relay_off(relay_num);
+                } else {
+                    std::cout << "Invalid action: " << action << "\n";
+                    sendResponse("Invalid action", drogon::k400BadRequest, std::move(callback));
+                    return;
+                }
 
-            auto resp = drogon::HttpResponse::newHttpResponse();
-            resp->setStatusCode(drogon::k200OK);
-            resp->setBody(status);
-            callback(resp);
+                std::cout << "Switching relay " << relay_num << " " << action << "\n";
+                std::string status = relayController.get_status();
+                std::cout << "Status: " << status << "\n";
+
+                sendResponse(status, drogon::k200OK, std::move(callback));
+            } catch (const std::invalid_argument& ia) {
+                std::cerr << "Invalid relay number: " << relay << '\n';
+                sendResponse("Invalid relay number", drogon::k400BadRequest, std::move(callback));
+            }
         });
 
-    
-    //Run HTTP framework,the method will block in the internal event loop
-    drogon::app().run();
-
-    return 0;
+        // Run HTTP framework, the method will block in the internal event loop
+        drogon::app().run();
 }
