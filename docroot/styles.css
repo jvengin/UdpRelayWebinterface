@@ -2,12 +2,14 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 5%;
+    padding: 5%;
+    height: 85vh;
 }
 
 button {
     padding: 10px;
-    font-size: 16px;
+    font-size: 4vw;
     border: none;
     border-radius: 5px;
     background: linear-gradient(to right, rgb(23, 88, 93), rgb(91, 134, 229));
@@ -37,4 +39,5 @@ html, body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    overflow: hidden;
 }
