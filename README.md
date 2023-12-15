@@ -12,3 +12,6 @@ cmake ..
 make
 ```
 Now you can run the program DrogonUdpController from the repo root.
+
+# Result
+![A screenshot from Chrome on a PC](images/chrome_pc_screenshot.png)
