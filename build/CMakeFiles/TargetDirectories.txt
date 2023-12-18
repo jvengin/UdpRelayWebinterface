@@ -1,6 +1,0 @@
-/home/jes/git/UdpRelayWebinterface/build/CMakeFiles/DrogonUdpController.dir
-/home/jes/git/UdpRelayWebinterface/build/CMakeFiles/edit_cache.dir
-/home/jes/git/UdpRelayWebinterface/build/CMakeFiles/rebuild_cache.dir
-/home/jes/git/UdpRelayWebinterface/build/test/CMakeFiles/DrogonUdpController_test.dir
-/home/jes/git/UdpRelayWebinterface/build/test/CMakeFiles/edit_cache.dir
-/home/jes/git/UdpRelayWebinterface/build/test/CMakeFiles/rebuild_cache.dir
