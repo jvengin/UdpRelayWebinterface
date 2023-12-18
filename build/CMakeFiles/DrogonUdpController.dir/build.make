@@ -93,6 +93,7 @@ DrogonUdpController_EXTERNAL_OBJECTS =
 DrogonUdpController: CMakeFiles/DrogonUdpController.dir/main.cc.o
 DrogonUdpController: CMakeFiles/DrogonUdpController.dir/build.make
 DrogonUdpController: /usr/local/lib/libdrogon.a
+DrogonUdpController: /usr/lib/x86_64-linux-gnu/libfmt.so.8.1.1
 DrogonUdpController: /usr/local/lib/libtrantor.a
 DrogonUdpController: /usr/lib/x86_64-linux-gnu/libssl.so
 DrogonUdpController: /usr/lib/x86_64-linux-gnu/libcrypto.so

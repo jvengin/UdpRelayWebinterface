@@ -29,9 +29,14 @@ add_executable(${PROJECT_NAME} main.cc)
 #
 # and comment out the following lines
 find_package(Drogon CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon)
+
+# Include the fmt library for logging
+find_package(fmt)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon fmt::fmt)
 
 # ##############################################################################
+
 
 if (CMAKE_CXX_STANDARD LESS 17)
     message(FATAL_ERROR "c++17 or higher is required")
