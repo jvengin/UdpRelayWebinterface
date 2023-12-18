@@ -6,7 +6,6 @@ First install the dependencies as described in the [Drogon documentation](https:
 ```
 git clone  https://github.com/jvengin/UdpRelayWebinterface.git
 cd UdpRelayWebinterface
-mkdir build
 cd build
 cmake ..
 make
