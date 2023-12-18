@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/jes/git/UdpRelayWebinterface/UdpControl/RelayController.cpp" "CMakeFiles/DrogonUdpController.dir/UdpControl/RelayController.cpp.o" "gcc" "CMakeFiles/DrogonUdpController.dir/UdpControl/RelayController.cpp.o.d"
   "/home/jes/git/UdpRelayWebinterface/main.cc" "CMakeFiles/DrogonUdpController.dir/main.cc.o" "gcc" "CMakeFiles/DrogonUdpController.dir/main.cc.o.d"
   )
 

@@ -142,6 +142,30 @@ DrogonUdpController_test/fast:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/DrogonUdpController_test.dir/build.make test/CMakeFiles/DrogonUdpController_test.dir/build
 .PHONY : DrogonUdpController_test/fast
 
+UdpControl/RelayController.o: UdpControl/RelayController.cpp.o
+.PHONY : UdpControl/RelayController.o
+
+# target to build an object file
+UdpControl/RelayController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DrogonUdpController.dir/build.make CMakeFiles/DrogonUdpController.dir/UdpControl/RelayController.cpp.o
+.PHONY : UdpControl/RelayController.cpp.o
+
+UdpControl/RelayController.i: UdpControl/RelayController.cpp.i
+.PHONY : UdpControl/RelayController.i
+
+# target to preprocess a source file
+UdpControl/RelayController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DrogonUdpController.dir/build.make CMakeFiles/DrogonUdpController.dir/UdpControl/RelayController.cpp.i
+.PHONY : UdpControl/RelayController.cpp.i
+
+UdpControl/RelayController.s: UdpControl/RelayController.cpp.s
+.PHONY : UdpControl/RelayController.s
+
+# target to generate assembly for a file
+UdpControl/RelayController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DrogonUdpController.dir/build.make CMakeFiles/DrogonUdpController.dir/UdpControl/RelayController.cpp.s
+.PHONY : UdpControl/RelayController.cpp.s
+
 main.o: main.cc.o
 .PHONY : main.o
 
@@ -176,6 +200,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... DrogonUdpController"
 	@echo "... DrogonUdpController_test"
+	@echo "... UdpControl/RelayController.o"
+	@echo "... UdpControl/RelayController.i"
+	@echo "... UdpControl/RelayController.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
