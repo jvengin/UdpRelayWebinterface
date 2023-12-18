@@ -26,7 +26,7 @@ int main() {
 
     std::string host = pt.get<std::string>("relay.relayHost");
     std::string relayPort = pt.get<std::string>("relay.relayPort");
-    std::string listenPort = pt.get<std::string>("application.listenPort");
+    uint16_t listenPort = pt.get<uint16_t>("application.listenPort");
     std::string logLevel = pt.get<std::string>("application.logLevel");
 
     // Create a logger that logs to stdout
@@ -57,7 +57,7 @@ int main() {
     relayController.get_status(); // initialize status
     
     //Set HTTP listener address and port
-    drogon::app().addListener("0.0.0.0", 5555);
+    drogon::app().addListener("0.0.0.0", listenPort);
     //Load config file
     drogon::app().loadConfigFile("drogonConfig.json");
 
